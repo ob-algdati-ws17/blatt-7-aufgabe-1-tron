@@ -48,4 +48,3 @@ litonen etwas gelöst haben, z.B. die Travis-Anbindung. Lösen Sie die Aufgabe d
 auf Ihre Weise. Plagiieren führt zu Nichtbestehen des Scheines und stellt nach den gül-
 tigen Gesetzen mindesten eine Ordnungswidrigkeit dar und kann damit noch weitere
 rechtliche Konsequenzen nach sich ziehen.
-_Letzte Änderung: 03.12.2017 14:00_
