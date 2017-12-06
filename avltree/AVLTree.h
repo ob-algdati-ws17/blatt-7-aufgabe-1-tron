@@ -1,6 +1,9 @@
 #ifndef AVLTREE_AVLTREE_H
 #define AVLTREE_AVLTREE_H
 
+/**
+ *
+ */
 class AVLTree {
 private:
     struct Node {
@@ -14,16 +17,15 @@ private:
 
     Node *root = nullptr;
 
-    Node* rotateLeft(Node*);
-    Node* rotateRight(Node *);
-    Node* rotateLeftThenRight(Node *);
-    Node* rotateRightThenLeft(Node *);
+    Node* singleLeftRotate(Node*);
+    Node* singleRightRotate(Node *);
+    Node* doubleRightRotate(Node *);
+    Node* doubleLeftRotate(Node *);
 
-    void rebalance(Node *);
+    void reBalance(Node *);
     int height(Node *);
     void setBalance(Node *);
     void printBalance(Node *);
-    void clearNode(Node *);
 
 public:
 
