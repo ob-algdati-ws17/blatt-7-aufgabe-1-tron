@@ -1,5 +1,6 @@
 #include <iostream>
 #include <functional>
+#include <search.h>
 #include "AVLTree.h"
 
 using namespace std;
@@ -133,7 +134,7 @@ void AVLTree::setBalance(Node *n) {
 void AVLTree::printBalance(Node *n) {
     if (n) {
         printBalance(n->left);
-        std::cout << n->balance << " ";
+        cout << n->balance << " ";
         printBalance(n->right);
     }
 }
@@ -144,8 +145,21 @@ void AVLTree::printBalance(Node *n) {
  * @return true or false if Node was found
  */
 bool AVLTree::search(const int v) {
-    // TODO
-    return false;
+    function<bool(const int, Node *)> treeSearch = [&](const int k, Node *n) {
+        if (n) {
+            if (k == n->key) {
+                return true;
+            }
+            if (k < n->key) {
+                return treeSearch(k, n->left);
+            } else {
+                return treeSearch(k, n->right);
+            }
+        } else {
+            return false;
+        }
+    };
+    return treeSearch(v, root);
 }
 
 /** Removes a Node by value.
