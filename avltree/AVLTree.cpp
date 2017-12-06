@@ -104,7 +104,7 @@ AVLTree::Node *AVLTree::doubleLeftRotate(Node *n) {
  * @param n
  */
 void AVLTree::reBalance(Node *n) {
-
+    setBalance(n);
 }
 
 /** Returns the height of the Node.
@@ -124,7 +124,7 @@ int AVLTree::height(Node *n) {
  * @param n Start node
  */
 void AVLTree::setBalance(Node *n) {
-    n->balance = height(n->right) - height(n->left);
+    n->balance = height(n->left) - height(n->right);
 }
 
 /**
@@ -183,7 +183,7 @@ bool AVLTree::insert(const int v) {
         return true;
     } else {
         Node *n = root, *parent;
-        while (true) {
+        while (true) { // TODO while raus und gegen rekursion tauschen
             if (n->key == v) {
                 return false;
             }
@@ -215,13 +215,15 @@ void AVLTree::print() {
 // DEBUGGING
 int main() {
     AVLTree t;
-
     cout << "Inserting integer values 1 to 10" << endl;
     for (int i = 1; i <= 10; ++i) {
         t.insert(i);
     }
     t.print();
+    cout << endl;
     t.remove(5);
+    cout << "5 was found: " << (t.search(5) ? "true" : "false") << endl;
     cout << "Printing balance: ";
     t.print();
-}*/
+}
+*/
