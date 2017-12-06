@@ -105,6 +105,24 @@ AVLTree::Node *AVLTree::doubleLeftRotate(Node *n) {
  */
 void AVLTree::reBalance(Node *n) {
     setBalance(n);
+    if (n->balance == -2) {
+        if (height(n->left->left) >= height(n->left->right)) {
+            n = singleRightRotate(n);
+        } else {
+            n = doubleRightRotate(n);
+        }
+    } else if (n->balance == 2) {
+        if (height(n->right->right) >= height(n->right->left)) {
+            n = singleLeftRotate(n);
+        } else {
+            n = doubleLeftRotate(n);
+        }
+    }
+    if (n->parent) {
+        reBalance(n->parent);
+    } else {
+        root = n;
+    }
 }
 
 /** Returns the height of the Node.
@@ -120,11 +138,11 @@ int AVLTree::height(Node *n) {
 }
 
 /** Sets the balance of the Nodes.
- *
+ *  The AVL-Criterion from wikipedia.de
  * @param n Start node
  */
 void AVLTree::setBalance(Node *n) {
-    n->balance = height(n->left) - height(n->right);
+    n->balance = height(n->right) - height(n->left);
 }
 
 /**
@@ -132,6 +150,7 @@ void AVLTree::setBalance(Node *n) {
  * @param n Start node
  */
 void AVLTree::printBalance(Node *n) {
+    // TODO als &operator<< bauen
     if (n) {
         printBalance(n->left);
         cout << n->balance << " ";
@@ -168,7 +187,7 @@ bool AVLTree::search(const int v) {
  * @return true or false if Node was deleted
  */
 bool AVLTree::remove(const int v) {
-
+    // TODO
     return false;
 }
 
