@@ -1,6 +1,10 @@
 #ifndef AVLTREE_AVLTREE_H
 #define AVLTREE_AVLTREE_H
 
+#include <iostream>
+
+using namespace std;
+
 /**
  *
  */
@@ -35,6 +39,8 @@ public:
     bool remove(const int);
     bool search(const int);
     void print();
+
+    friend ostream &operator<<(ostream &, const AVLTree &);
 
 };
 

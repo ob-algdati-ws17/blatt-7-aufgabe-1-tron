@@ -202,7 +202,7 @@ bool AVLTree::insert(const int v) {
         return true;
     } else {
         Node *n = root, *parent;
-        while (true) { // TODO while raus und gegen rekursion tauschen
+        while (n) { // TODO while raus und gegen rekursion tauschen
             if (n->key == v) {
                 return false;
             }
@@ -230,6 +230,37 @@ void AVLTree::print() {
     printBalance(root);
 }
 
+
+ostream &operator<<(ostream &os, const AVLTree &tree) {
+    function<void(ostream &, const int, const AVLTree::Node *, const string)> printToOs
+            = [&](ostream &os, const int value, const AVLTree::Node *node, const string l) {
+
+                static int nullcount = 0;
+
+                if (!node) {
+                    os << "    null" << nullcount << "[shape=point];" << endl;
+                    os << "    " << value << " -> null" << nullcount
+                       << " [label=\"" << l << "\"];" << endl;
+                    nullcount++;
+                } else {
+                    os << "    " << value << " -> " << node->key
+                       << " [label=\"" << l << "\"];" << endl;
+
+                    printToOs(os, node->key, node->left, "l");
+                    printToOs(os, node->key, node->right, "r");
+                }
+            };
+    os << "digraph tree {" << endl;
+    if (!tree.root) {
+        os << "    null " << "[shape=point];" << endl;
+    } else {
+        printToOs(os, tree.root->key, tree.root->left, "l");
+        printToOs(os, tree.root->key, tree.root->right, "r");
+    }
+    os << "}" << endl;
+    return os;
+}
+
 /*
 // DEBUGGING
 int main() {
@@ -238,11 +269,14 @@ int main() {
     for (int i = 1; i <= 10; ++i) {
         t.insert(i);
     }
+    cout << t << endl;
     t.print();
     cout << endl;
     t.remove(5);
     cout << "5 was found: " << (t.search(5) ? "true" : "false") << endl;
     cout << "Printing balance: ";
     t.print();
+    cout << t << endl;
 }
 */
+
