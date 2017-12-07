@@ -1,11 +1,16 @@
 #ifndef TRON_ALGDAT_LIBRARY_H
 #define TRON_ALGDAT_LIBRARY_H
-
+/*! Header-File for AVL Tree */
 #include <iostream>
 
 using namespace std;
 
 /** Header class for an AVL Tree.
+ * @author Maximilian Schmitz, Salman
+ * @date 7.12.2017
+ *
+ * @version 0.9
+ * Toten Code entfernt.
  *
  */
 class AVLTree {

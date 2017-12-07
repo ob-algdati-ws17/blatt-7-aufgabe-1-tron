@@ -1,3 +1,4 @@
+/*! Source-File for AVL Tree */
 #include <iostream>
 #include <functional>
 #include "library.h"
@@ -6,8 +7,8 @@ using namespace std;
 
 /** Constructor for one Node.
  *
- * @param v Value of new Node
- * @param p Node pointer of parent Node
+ * @param [v] Value of new Node
+ * @param [p] Node pointer of parent Node
  */
 AVLTree::Node::Node(const int v, Node *p) : key(v), balance(0), parent(p), left(nullptr), right(nullptr) {}
 
@@ -28,7 +29,7 @@ AVLTree::~AVLTree() {
 
 /**
  *
- * @param n
+ * @param [n]
  * @return
  */
 AVLTree::Node *AVLTree::singleLeftRotate(Node *n) {
@@ -54,7 +55,7 @@ AVLTree::Node *AVLTree::singleLeftRotate(Node *n) {
 
 /**
  *
- * @param n
+ * @param [n]
  * @return
  */
 AVLTree::Node *AVLTree::singleRightRotate(Node *n) {
@@ -80,7 +81,7 @@ AVLTree::Node *AVLTree::singleRightRotate(Node *n) {
 
 /**
  *
- * @param n
+ * @param [n]
  * @return
  */
 AVLTree::Node *AVLTree::doubleRightRotate(Node *n) {
@@ -90,7 +91,7 @@ AVLTree::Node *AVLTree::doubleRightRotate(Node *n) {
 
 /**
  *
- * @param n
+ * @param [n]
  * @return
  */
 AVLTree::Node *AVLTree::doubleLeftRotate(Node *n) {
@@ -100,7 +101,7 @@ AVLTree::Node *AVLTree::doubleLeftRotate(Node *n) {
 
 /** Reblanaced the AVL Tree.
  *
- * @param n Node to be rebalanced
+ * @param [n] Node to be rebalanced
  */
 void AVLTree::reBalance(Node *n) {
     setBalance(n);
@@ -127,7 +128,7 @@ void AVLTree::reBalance(Node *n) {
 
 /** Returns the height of the Node.
  *
- * @param n Start node
+ * @param [n] Start node
  * @return Height of Node
  */
 int AVLTree::height(Node *n) {
@@ -136,7 +137,7 @@ int AVLTree::height(Node *n) {
 
 /** Sets the balance of the Nodes.
  *  The AVL-Criterion from wikipedia.de
- * @param n Start node
+ * @param [n] Start node
  */
 void AVLTree::setBalance(Node *n) {
     n->balance = height(n->right) - height(n->left);
@@ -144,7 +145,7 @@ void AVLTree::setBalance(Node *n) {
 
 /** Returns if is the tree balanced.
  *
- * @param n Node
+ * @param [n] Node to check
  * @return true or false if tree is balanced
  */
 bool AVLTree::isBalanced(Node *n) {
@@ -163,7 +164,7 @@ bool AVLTree::isBalanced(Node *n) {
 
 /** Searches for a value in AVL Tree.
  *
- * @param v Value of Node
+ * @param [v] Value of Node
  * @return true or false if Node was found
  */
 bool AVLTree::search(const int v) {
@@ -186,7 +187,7 @@ bool AVLTree::search(const int v) {
 
 /** Removes a Node by value.
  *
- * @param v Value of Node
+ * @param [v] Value of Node
  * @return true or false if Node was deleted
  */
 bool AVLTree::remove(const int v) {
@@ -230,7 +231,7 @@ bool AVLTree::remove(const int v) {
 
 /** Inserts a Node.
  *
- * @param v New Key for the new Node
+ * @param [v] New Key for the new Node
  * @return true or false if a Node was inserted
  */
 bool AVLTree::insert(const int v) {
