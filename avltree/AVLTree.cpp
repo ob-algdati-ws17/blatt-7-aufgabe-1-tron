@@ -187,7 +187,38 @@ bool AVLTree::search(const int v) {
  * @return true or false if Node was deleted
  */
 bool AVLTree::remove(const int v) {
-    // TODO
+    if (!root) {
+        return false;
+    }
+    Node *curr = root;
+    Node *parent = root;
+    Node *deleteNode = nullptr;
+    Node *child = root;
+    while (child) {
+        parent = curr;
+        curr = child;
+        child = v >= curr->key ? curr->right : curr->left;
+        if (v == curr->key) {
+            deleteNode = curr;
+            break;
+        }
+    }
+    if (deleteNode) {
+        deleteNode = curr;
+        child = curr->left ? curr->left : curr->right;
+        delete deleteNode;
+        if (root->key == v) {
+            root = child;
+        } else {
+            if (parent->left == curr) {
+                parent->left = child;
+            } else {
+                parent->right = child;
+            }
+            reBalance(parent);
+        }
+        return true;
+    }
     return false;
 }
 
@@ -232,36 +263,36 @@ void AVLTree::print() {
 
 
 ostream &operator<<(ostream &os, const AVLTree &tree) {
-    function<void(ostream &, const int, const AVLTree::Node *, const string)> printToOs
-            = [&](ostream &os, const int value, const AVLTree::Node *node, const string l) {
+    function<void(ostream &, const int, const int, const AVLTree::Node *, const string)> printToOs
+            = [&](ostream &os, const int value, const int balance, const AVLTree::Node *node, const string l) {
 
                 static int nullcount = 0;
 
                 if (!node) {
                     os << "    null" << nullcount << "[shape=point];" << endl;
-                    os << "    " << value << " -> null" << nullcount
+                    os << "    " << value << "([Label=\"" << balance << "\")" << " -> null" << nullcount
                        << " [label=\"" << l << "\"];" << endl;
                     nullcount++;
                 } else {
-                    os << "    " << value << " -> " << node->key
-                       << " [label=\"" << l << "\"];" << endl;
+                    os << "    " << value << "([Label=\"" << balance << "\")" << " -> " << node->key
+                       << "([Label=\"" << node->balance << "\")" << " [label=\"" << l << "\"];" << endl;
 
-                    printToOs(os, node->key, node->left, "l");
-                    printToOs(os, node->key, node->right, "r");
+                    printToOs(os, node->key, node->balance, node->left, "l");
+                    printToOs(os, node->key, node->balance, node->right, "r");
                 }
             };
     os << "digraph tree {" << endl;
     if (!tree.root) {
         os << "    null " << "[shape=point];" << endl;
     } else {
-        printToOs(os, tree.root->key, tree.root->left, "l");
-        printToOs(os, tree.root->key, tree.root->right, "r");
+        printToOs(os, tree.root->key, tree.root->balance, tree.root->left, "l");
+        printToOs(os, tree.root->key, tree.root->balance, tree.root->right, "r");
     }
     os << "}" << endl;
     return os;
 }
 
-/*
+
 // DEBUGGING
 int main() {
     AVLTree t;
@@ -269,14 +300,12 @@ int main() {
     for (int i = 1; i <= 10; ++i) {
         t.insert(i);
     }
-    cout << t << endl;
+    cout << "AVL Tree nach insert: \n" << t << endl;
     t.print();
-    cout << endl;
     t.remove(5);
-    cout << "5 was found: " << (t.search(5) ? "true" : "false") << endl;
-    cout << "Printing balance: ";
+    cout << "AVLTree nach remove(): \n" << t << endl;
     t.print();
-    cout << t << endl;
-}
-*/
+    cout << "AVLTree search for 5: " << (t.search(5) ? "was " : "not ") << "found" << endl;
+    cout << "AVLTree search for 6: " << (t.search(6) ?  "" : "not ") << "found" << endl;
 
+}
