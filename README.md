@@ -2,10 +2,9 @@
 # Blatt 7
 ## Prof. Dr. Oliver Braun
 
-```
-Link zur Website: <a>https://ob-algdati-ws17.github.io/blatt-7-aufgabe-1-tron</a>
+
+Link zur Website:    https://ob-algdati-ws17.github.io/blatt-7-aufgabe-1-tron
 Link zum Repository: https://github.com/ob-algdati-ws17/blatt-7-aufgabe-1-tron
-```
 
 
 ```
