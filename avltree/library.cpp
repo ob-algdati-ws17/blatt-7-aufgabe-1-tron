@@ -1,6 +1,5 @@
 #include <iostream>
 #include <functional>
-#include <cmath>
 #include "library.h"
 
 using namespace std;
@@ -99,25 +98,26 @@ AVLTree::Node *AVLTree::doubleLeftRotate(Node *n) {
     return singleLeftRotate(n);
 }
 
-/**
+/** Reblanaced the AVL Tree.
  *
- * @param n
+ * @param n Node to be rebalanced
  */
 void AVLTree::reBalance(Node *n) {
     setBalance(n);
-    if (n->balance == -2) {
-        if (height(n->left->left) >= height(n->left->right)) {
-            n = singleRightRotate(n);
-        } else {
-            n = doubleRightRotate(n);
-        }
-    } else if (n->balance == 2) {
-        if (height(n->right->right) >= height(n->right->left)) {
-            n = singleLeftRotate(n);
-        } else {
+    if (n->balance == 2) { // Tree is right heavy
+        if (height(n->right->left) >= height(n->right->right)) { // Tree's right subtree is left heavy
             n = doubleLeftRotate(n);
+        } else {
+            n = singleLeftRotate(n);
+        }
+    } else if (n->balance == -2) { // Tree is left heavy
+        if (height(n->left->right) >= height(n->left->left)) { // Tree's left subtree is right heavy
+            n = doubleRightRotate(n);
+        } else {
+            n = singleRightRotate(n);
         }
     }
+
     if (n->parent) {
         reBalance(n->parent);
     } else {
@@ -132,10 +132,6 @@ void AVLTree::reBalance(Node *n) {
  */
 int AVLTree::height(Node *n) {
     return (!n) ? -1 : 1 + max(height(n->left), height(n->right));
-//    if (!n) {
-//        return -1;
-//    }
-//    return 1 + max(height(n->left), height(n->right));
 }
 
 /** Sets the balance of the Nodes.
@@ -274,21 +270,21 @@ bool AVLTree::balanced() {
 
 ostream &operator<<(ostream &os, const AVLTree &tree) {
     function<void(ostream &, const int, const int, const AVLTree::Node *, const string)> printToOs
-            = [&](ostream &os, const int value, const int balance, const AVLTree::Node *node, const string l) {
+            = [&](ostream &ost, const int value, const int balance, const AVLTree::Node *node, const string l) {
 
                 static int nullcount = 0;
 
                 if (!node) {
-                    os << "    null" << nullcount << "[shape=point];" << endl;
-                    os << "    " << value << "([Label=\"" << balance << "\")" << " -> null" << nullcount
+                    ost << "    null" << nullcount << "[shape=point];" << endl;
+                    ost << "    " << value << "([Label=\"" << balance << "\")" << " -> null" << nullcount
                        << " [label=\"" << l << "\"];" << endl;
                     nullcount++;
                 } else {
-                    os << "    " << value << "([Label=\"" << balance << "\")" << " -> " << node->key
+                    ost << "    " << value << "([Label=\"" << balance << "\")" << " -> " << node->key
                        << "([Label=\"" << node->balance << "\")" << " [label=\"" << l << "\"];" << endl;
 
-                    printToOs(os, node->key, node->balance, node->left, "l");
-                    printToOs(os, node->key, node->balance, node->right, "r");
+                    printToOs(ost, node->key, node->balance, node->left, "l");
+                    printToOs(ost, node->key, node->balance, node->right, "r");
                 }
             };
     os << "digraph tree {" << endl;
