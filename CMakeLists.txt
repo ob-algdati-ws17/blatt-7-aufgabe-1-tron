@@ -34,7 +34,7 @@ add_subdirectory(test)
 
 enable_testing()
 
-add_test(TestLibrary test/testLibrary --gtest_output=xml:report.xml)
+add_test(TestAVLTree test/testLibrary --gtest_output=xml:report.xml)
 
 # first we can indicate the documentation build as an option and set it to ON by default
 option(BUILD_DOC "Build documentation" ON)

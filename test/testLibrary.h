@@ -1,12 +1,12 @@
-#ifndef AVLTREE_TESTAVLTREE_H
-#define AVLTREE_TESTAVLTREE_H
+#ifndef TESTAVLTREE_H
+#define TESTAVLTREE_H
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 #include "avltree/library.h"
 
-class TestLibrary : public ::testing::Test {
+class TestAVLTree : public ::testing::Test {
 };
 
 
-#endif //AVLTREE_TESTAVLTREE_H
+#endif //TESTAVLTREE_H

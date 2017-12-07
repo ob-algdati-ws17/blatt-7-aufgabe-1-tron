@@ -1,5 +1,6 @@
-#ifndef TRON_ALGDAT_LIBRARY_H
-#define TRON_ALGDAT_LIBRARY_H
+#ifndef BLATT_7_AUFGABE_1_TRON_LIBRARY_H
+#define BLATT_7_AUFGABE_1_TRON_LIBRARY_H
+
 #include <iostream>
 
 using namespace std;
