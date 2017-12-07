@@ -1,5 +1,5 @@
-#ifndef AVLTREE_AVLTREE_H
-#define AVLTREE_AVLTREE_H
+#ifndef TRON_ALGDAT_LIBRARY_H
+#define TRON_ALGDAT_LIBRARY_H
 
 #include <iostream>
 
@@ -44,4 +44,4 @@ public:
 
 };
 
-#endif //AVLTREE_AVLTREE_H
+#endif

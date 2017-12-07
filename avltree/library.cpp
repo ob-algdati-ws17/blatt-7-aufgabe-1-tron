@@ -1,7 +1,6 @@
 #include <iostream>
 #include <functional>
-#include <search.h>
-#include "AVLTree.h"
+#include "library.h"
 
 using namespace std;
 
@@ -291,7 +290,6 @@ ostream &operator<<(ostream &os, const AVLTree &tree) {
     os << "}" << endl;
     return os;
 }
-
 
 // DEBUGGING
 int main() {
