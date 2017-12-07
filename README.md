@@ -24,9 +24,9 @@ dieser Aufgabe muss folgendes bis zum **14.01.2018, 20:00** umgesetzt sein:
 Anmerkung: Für die Freischaltung ihres Projektes auf der Travis-Plattform erzeu-
 gen Sie ein Issue und weisen es mir zu. Sie haben nicht die notwendigen Rechte
 das selbst zu tun.
-5. Die DateiREADME.mdenthält einen Link auf Ihre GitHub-Page.
+5. Die Datei README.md enthält einen Link auf Ihre GitHub-Page.
 
-### 1
+
 _Algorithmen und Datenstrukturen I: Blatt 7 Prof. Dr. Oliver Braun_
 Zusätzlich muss in eine Zweierteam folgendes umgesetzt werden:
 1. Die Googletest-Testsuite sichert die Qualität der Bibliothek in einem sehr hohen
