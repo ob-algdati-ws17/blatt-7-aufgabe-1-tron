@@ -1,6 +1,5 @@
 #ifndef TRON_ALGDAT_LIBRARY_H
 #define TRON_ALGDAT_LIBRARY_H
-/*! Header-File for AVL Tree */
 #include <iostream>
 
 using namespace std;

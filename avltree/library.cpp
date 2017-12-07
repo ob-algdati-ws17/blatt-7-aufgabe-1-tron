@@ -1,4 +1,3 @@
-/*! Source-File for AVL Tree */
 #include <iostream>
 #include <functional>
 #include "library.h"
@@ -307,10 +306,8 @@ int main() {
         t.insert(i);
     }
     cout << "AVL Tree nach insert: \n" << t.balanced() << endl;
-    t.print();
     t.remove(5);
     cout << "AVLTree nach remove(): \n" << t << endl;
-    t.print();
     cout << "AVLTree search for 5: " << (t.search(5) ? "was " : "not ") << "found" << endl;
     cout << "AVLTree search for 6: " << (t.search(6) ?  "" : "not ") << "found" << endl;
     cout << "AVL Tree is balanced: " << (t.balanced() ? "" : "not") << "balanced" << endl;
