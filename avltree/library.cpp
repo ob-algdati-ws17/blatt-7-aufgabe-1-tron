@@ -1,5 +1,6 @@
 #include <iostream>
 #include <functional>
+#include <cmath>
 #include "library.h"
 
 using namespace std;
@@ -130,10 +131,11 @@ void AVLTree::reBalance(Node *n) {
  * @return Height of Node
  */
 int AVLTree::height(Node *n) {
-    if (!n) {
-        return -1;
-    }
-    return 1 + max(height(n->left), height(n->right));
+    return (!n) ? -1 : 1 + max(height(n->left), height(n->right));
+//    if (!n) {
+//        return -1;
+//    }
+//    return 1 + max(height(n->left), height(n->right));
 }
 
 /** Sets the balance of the Nodes.
@@ -142,6 +144,25 @@ int AVLTree::height(Node *n) {
  */
 void AVLTree::setBalance(Node *n) {
     n->balance = height(n->right) - height(n->left);
+}
+
+/** Returns if is the tree balanced.
+ *
+ * @param n Node
+ * @return true or false if tree is balanced
+ */
+bool AVLTree::isBalanced(Node *n) {
+    if(!n){
+        return true;
+    }
+    else{
+        int lh = height(n->left);
+        int rh = height(n->right);
+        if (lh - rh > 1 || rh - lh > 1) {
+            return false;
+        }
+    }
+    return true;
 }
 
 /**
@@ -189,32 +210,35 @@ bool AVLTree::remove(const int v) {
     if (!root) {
         return false;
     }
-    Node *curr = root;
+
+    Node *n = root;
     Node *parent = root;
     Node *deleteNode = nullptr;
     Node *child = root;
+
     while (child) {
-        parent = curr;
-        curr = child;
-        child = v >= curr->key ? curr->right : curr->left;
-        if (v == curr->key) {
-            deleteNode = curr;
+        parent = n;
+        n = child;
+        child = v >= n->key ? n->right : n->left;
+        if (v == n->key) {
+            deleteNode = n;
             break;
         }
     }
+
     if (deleteNode) {
-        deleteNode = curr;
-        child = curr->left ? curr->left : curr->right;
-        delete deleteNode;
+        deleteNode = n;
+        child = n->left ? n->left : n->right;
         if (root->key == v) {
             root = child;
         } else {
-            if (parent->left == curr) {
+            if (parent->left == n) {
                 parent->left = child;
             } else {
                 parent->right = child;
             }
             reBalance(parent);
+            delete deleteNode;
         }
         return true;
     }
@@ -232,7 +256,7 @@ bool AVLTree::insert(const int v) {
         return true;
     } else {
         Node *n = root, *parent;
-        while (n) { // TODO while raus und gegen rekursion tauschen
+        while (n) { // TODO while raus und gegen rekursion tauschen, wenn moeglich
             if (n->key == v) {
                 return false;
             }
@@ -251,6 +275,14 @@ bool AVLTree::insert(const int v) {
         }
         return true;
     }
+}
+
+/**
+ *
+ * @return
+ */
+bool AVLTree::balanced() {
+   return isBalanced(root);
 }
 
 /** Prints the balance of the AVL Tree from root.
@@ -298,13 +330,14 @@ int main() {
     for (int i = 1; i <= 10; ++i) {
         t.insert(i);
     }
-    cout << "AVL Tree nach insert: \n" << t << endl;
+    cout << "AVL Tree nach insert: \n" << t.balanced() << endl;
     t.print();
     t.remove(5);
     cout << "AVLTree nach remove(): \n" << t << endl;
     t.print();
     cout << "AVLTree search for 5: " << (t.search(5) ? "was " : "not ") << "found" << endl;
     cout << "AVLTree search for 6: " << (t.search(6) ?  "" : "not ") << "found" << endl;
+    cout << "AVL Tree is balanced: " << (t.balanced() ? "" : "not") << "balanced" << endl;
 
 }
 */

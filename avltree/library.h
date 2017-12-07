@@ -30,6 +30,7 @@ private:
     int height(Node *);
     void setBalance(Node *);
     void printBalance(Node *);
+    bool isBalanced(Node *);
 
 public:
 
@@ -38,6 +39,7 @@ public:
     bool insert(const int);
     bool remove(const int);
     bool search(const int);
+    bool balanced();
     void print();
 
     friend ostream &operator<<(ostream &, const AVLTree &);
