@@ -96,9 +96,17 @@ TEST(AVLTreeTest, Test_CreateTree_Remove_Exists) {
     t.insert(2);
     cout << t << endl;
     EXPECT_TRUE(t.remove(1));
+}
+
+TEST(AVLTreeTest, Test_CreateTree_Remove_Exists_And_Not_Found) {
+    AVLTree t;
+    t.insert(1);
+    t.insert(2);
     cout << t << endl;
     EXPECT_FALSE(t.remove(3));
 }
+
+
 
 
 
