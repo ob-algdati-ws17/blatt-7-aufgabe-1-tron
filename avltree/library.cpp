@@ -290,7 +290,7 @@ ostream &operator<<(ostream &os, const AVLTree &tree) {
     os << "}" << endl;
     return os;
 }
-
+/*
 // DEBUGGING
 int main() {
     AVLTree t;
@@ -307,3 +307,4 @@ int main() {
     cout << "AVLTree search for 6: " << (t.search(6) ?  "" : "not ") << "found" << endl;
 
 }
+*/
