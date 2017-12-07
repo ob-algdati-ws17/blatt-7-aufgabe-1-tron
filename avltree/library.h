@@ -5,7 +5,7 @@
 
 using namespace std;
 
-/**
+/** Header class for an AVL Tree.
  *
  */
 class AVLTree {
@@ -29,7 +29,6 @@ private:
     void reBalance(Node *);
     int height(Node *);
     void setBalance(Node *);
-    void printBalance(Node *);
     bool isBalanced(Node *);
 
 public:
@@ -40,7 +39,6 @@ public:
     bool remove(const int);
     bool search(const int);
     bool balanced();
-    void print();
 
     friend ostream &operator<<(ostream &, const AVLTree &);
 

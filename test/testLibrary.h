@@ -5,7 +5,7 @@
 #include "gmock/gmock.h"
 #include "avltree/library.h"
 
-class AVLTreeTest : public ::testing::Test {
+class TestLibrary : public ::testing::Test {
 };
 
 

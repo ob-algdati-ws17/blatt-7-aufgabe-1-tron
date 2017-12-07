@@ -165,19 +165,6 @@ bool AVLTree::isBalanced(Node *n) {
     return true;
 }
 
-/**
- * Prints the balance of the Nodes.
- * @param n Start node
- */
-void AVLTree::printBalance(Node *n) {
-    // TODO als &operator<< bauen
-    if (n) {
-        printBalance(n->left);
-        cout << n->balance << " ";
-        printBalance(n->right);
-    }
-}
-
 /** Searches for a value in AVL Tree.
  *
  * @param v Value of Node
@@ -284,14 +271,6 @@ bool AVLTree::insert(const int v) {
 bool AVLTree::balanced() {
    return isBalanced(root);
 }
-
-/** Prints the balance of the AVL Tree from root.
- *
- */
-void AVLTree::print() {
-    printBalance(root);
-}
-
 
 ostream &operator<<(ostream &os, const AVLTree &tree) {
     function<void(ostream &, const int, const int, const AVLTree::Node *, const string)> printToOs
