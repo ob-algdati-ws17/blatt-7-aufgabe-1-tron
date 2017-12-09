@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 2.8.2)
 
 project(googletest-download NONE)
-
 include(ExternalProject)
 ExternalProject_Add(googletest
         GIT_REPOSITORY    https://github.com/google/googletest.git
@@ -13,10 +12,12 @@ ExternalProject_Add(googletest
         INSTALL_COMMAND   ""
         TEST_COMMAND      ""
         )
+
+		
+		
+		
 project(doxygen-download NONE)
-
 include(ExternalProject)
-
 ExternalProject_Add(doxygen
         GIT_REPOSITORY    https://github.com/doxygen/doxygen.git
         GIT_TAG           master
@@ -28,10 +29,11 @@ ExternalProject_Add(doxygen
         TEST_COMMAND      ""
         )
 
+		
+		
+		
 project(dot-download NONE)
-
 include(ExternalProject)
-        
 ExternalProject_Add(dot
         GIT_REPOSITORY    https://gitlab.com/graphviz/graphviz.git
         GIT_TAG           master
