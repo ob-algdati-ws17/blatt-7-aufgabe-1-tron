@@ -167,7 +167,7 @@ bool AVLTree::isBalanced(Node *n) {
  * @return true or false if Node was found
  */
 bool AVLTree::search(const int v) {
-    function<bool(const int, Node *)> treeSearch = [&](const int k, Node *n) {
+    function<bool(const int, Node *)> treeSearch = [&] (const int k, Node *n) {
         if (n) {
             if (k == n->key) {
                 return true;
@@ -276,12 +276,12 @@ ostream &operator<<(ostream &os, const AVLTree &tree) {
 
                 if (!node) {
                     ost << "    null" << nullcount << "[shape=point];" << endl;
-                    ost << "    " << value << "([Label=\"" << balance << "\")" << " -> null" << nullcount
+                    ost << "    " << value << "([Label=\"" << balance << "\"])" << " -> null" << nullcount
                        << " [label=\"" << l << "\"];" << endl;
                     nullcount++;
                 } else {
-                    ost << "    " << value << "([Label=\"" << balance << "\")" << " -> " << node->key
-                       << "([Label=\"" << node->balance << "\")" << " [label=\"" << l << "\"];" << endl;
+                    ost << "    " << value << "([Label=\"" << balance << "\"])" << " -> " << node->key
+                       << "([Label=\"" << node->balance << "\"])" << " [label=\"" << l << "\"];" << endl;
 
                     printToOs(ost, node->key, node->balance, node->left, "l");
                     printToOs(ost, node->key, node->balance, node->right, "r");

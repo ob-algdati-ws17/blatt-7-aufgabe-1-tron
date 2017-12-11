@@ -1,2 +1,2 @@
-OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/doc_doxygen/
-INPUT                  = @CMAKE_CURRENT_SOURCE_DIR@/../src/ @CMAKE_CURRENT_SOURCE_DIR@/../docs
+OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/cmake-build-debug/doc/
+INPUT                  = @CMAKE_CURRENT_SOURCE_DIR@/cmake-build-debug/doxygen-src/ @CMAKE_CURRENT_SOURCE_DIR@/docs
