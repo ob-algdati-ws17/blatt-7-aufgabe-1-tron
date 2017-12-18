@@ -1,9 +1,32 @@
 language: cpp
-compiler: gcc
-script:
-    - rm -rf build
+
+compiler:
+    - gcc
+
+# Install dependencies
+addons:
+  apt:
+    packages:
+      - doxygen
+      - doxygen-doc
+      - doxygen-latex
+      - doxygen-gui
+      - graphviz
+    sources:
+      - ubuntu-toolchain-r-test
+
+before_install:
+  - pip install --user cpp-coveralls
+
+before_script:
     - mkdir build
     - cd build
     - cmake ..
+
+script:
     - make
-    - make test
+    - test/testLibrary
+
+after_success:
+  - coveralls --root .. -E ".*googletest-src.*" -E ".*gtest.*" -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"
+
