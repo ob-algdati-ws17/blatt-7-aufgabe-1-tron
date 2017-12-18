@@ -4,33 +4,25 @@
 
 using namespace std;
 
-/** Constructor for one Node.
- *
- * @param [v] Value of new Node
- * @param [p] Node pointer of parent Node
- */
+/// Constructor for one Node.
+/// \param [v] Value of new Node
+/// \param [p] Node pointer of parent Node
 AVLTree::Node::Node(const int v, Node *p) : key(v), balance(0), parent(p), left(nullptr), right(nullptr) {}
 
-/** Deconstructor for one Node.
- *
- */
+////Deconstructor for one Node.
 AVLTree::Node::~Node() {
     delete left;
     delete right;
 }
 
-/** Destructor for AVL Tree.
- *
- */
+///Destructor for AVL Tree.
 AVLTree::~AVLTree() {
     delete root;
 }
 
-/**
- *
- * @param [n]
- * @return
- */
+/// A singel left rotation.
+/// \param [n]
+/// \return
 AVLTree::Node *AVLTree::singleLeftRotate(Node *n) {
     Node *tmp = n->right;
     tmp->parent = n->parent;
@@ -52,11 +44,9 @@ AVLTree::Node *AVLTree::singleLeftRotate(Node *n) {
     return tmp;
 }
 
-/**
- *
- * @param [n]
- * @return
- */
+/// A single right rotation.
+/// \param [n]
+/// \return
 AVLTree::Node *AVLTree::singleRightRotate(Node *n) {
     Node *tmp = n->left;
     tmp->parent = n->parent;
@@ -78,30 +68,24 @@ AVLTree::Node *AVLTree::singleRightRotate(Node *n) {
     return tmp;
 }
 
-/**
- *
- * @param [n]
- * @return
- */
+/// A double right rotation.
+/// \param [n]
+/// \return
 AVLTree::Node *AVLTree::doubleRightRotate(Node *n) {
     n->left = singleLeftRotate(n->left);
     return singleRightRotate(n);
 }
 
-/**
- *
- * @param [n]
- * @return
- */
+/// A double left rotation.
+/// \param [n]
+/// \return
 AVLTree::Node *AVLTree::doubleLeftRotate(Node *n) {
     n->right = singleRightRotate(n->right);
     return singleLeftRotate(n);
 }
 
-/** Reblanaced the AVL Tree.
- *
- * @param [n] Node to be rebalanced
- */
+/// Reblanaced the AVL Tree.
+/// \param [n] Node to be rebalanced
 void AVLTree::reBalance(Node *n) {
     setBalance(n);
     if (n->balance == 2) { // Tree is right heavy
@@ -125,28 +109,23 @@ void AVLTree::reBalance(Node *n) {
     }
 }
 
-/** Returns the height of the Node.
- *
- * @param [n] Start node
- * @return Height of Node
- */
+/// Returns the height of the Node.
+/// \param [n] Start node
+/// \return Height of Node
 int AVLTree::height(Node *n) {
     return (!n) ? -1 : 1 + max(height(n->left), height(n->right));
 }
 
-/** Sets the balance of the Nodes.
- *  The AVL-Criterion from wikipedia.de
- * @param [n] Start node
- */
+/// Sets the balance of the Nodes.
+/// The AVL-Criterion from wikipedia.de
+/// \param [n] Start node
 void AVLTree::setBalance(Node *n) {
     n->balance = height(n->right) - height(n->left);
 }
 
-/** Returns if is the tree balanced.
- *
- * @param [n] Node to check
- * @return true or false if tree is balanced
- */
+/// Returns if is the tree balanced.
+/// \param [n] Node to check
+/// \return true or false if tree is balanced
 bool AVLTree::isBalanced(Node *n) {
     if(!n){
         return true;
@@ -161,11 +140,9 @@ bool AVLTree::isBalanced(Node *n) {
     return true;
 }
 
-/** Searches for a value in AVL Tree.
- *
- * @param [v] Value of Node
- * @return true or false if Node was found
- */
+/// Searches for a value in AVL Tree.
+/// \param [v] Value of Node
+/// \return true or false if Node was found
 bool AVLTree::search(const int v) {
     function<bool(const int, Node *)> treeSearch = [&] (const int k, Node *n) {
         if (n) {
@@ -184,11 +161,9 @@ bool AVLTree::search(const int v) {
     return treeSearch(v, root);
 }
 
-/** Removes a Node by value.
- *
- * @param [v] Value of Node
- * @return true or false if Node was deleted
- */
+/// Removes a Node by value.
+/// \param [v] Value of Node
+/// \return true or false if Node was deleted
 bool AVLTree::remove(const int v) {
     if (!root) {
         return false;
@@ -228,11 +203,9 @@ bool AVLTree::remove(const int v) {
     return false;
 }
 
-/** Inserts a Node.
- *
- * @param [v] New Key for the new Node
- * @return true or false if a Node was inserted
- */
+/// Inserts a Node.
+/// \param [v] New Key for the new Node
+/// \return true or false if a Node was inserted
 bool AVLTree::insert(const int v) {
     if (!root) {
         root = new Node(v, nullptr);
@@ -260,10 +233,8 @@ bool AVLTree::insert(const int v) {
     }
 }
 
-/**
- *
- * @return
- */
+///
+/// \return
 bool AVLTree::balanced() {
    return isBalanced(root);
 }
@@ -298,7 +269,7 @@ ostream &operator<<(ostream &os, const AVLTree &tree) {
     return os;
 }
 /*
-// DEBUGGING
+/// DEBUGGING ONLY
 int main() {
     AVLTree t;
     cout << "Inserting integer values 1 to 10" << endl;

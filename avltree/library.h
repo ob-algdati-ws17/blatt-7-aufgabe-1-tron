@@ -5,14 +5,12 @@
 
 using namespace std;
 
-/** Header class for an AVL Tree.
- * @author Maximilian Schmitz, Salman
- * @date 7.12.2017
- *
- * @version 0.9
- * Toten Code entfernt.
- *
- */
+/// Header class for an AVL Tree.
+/// \authors Maximilian Schmitz, Salman
+/// \date 7.12.2017
+///
+/// \version 0.9
+/// Toten Code entfernt.
 class AVLTree {
 private:
     struct Node {
