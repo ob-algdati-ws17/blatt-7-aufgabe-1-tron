@@ -13,15 +13,26 @@ using namespace std;
 /// Toten Code entfernt.
 class AVLTree {
 private:
+
+    /// Struct for one Node.
     struct Node {
+        /// Node key.
         const int key;
+
+        /// Node balance.
         int balance;
+
+        /// Nodes left right and parent.
         Node *left, *right, *parent;
 
+        /// Deconstructor for one Node.
         ~Node();
+
+        /// Constructor for one Node.
         Node(const int, Node *);
     };
 
+    /// Root pointer.
     Node *root = nullptr;
 
     Node* singleLeftRotate(Node*);

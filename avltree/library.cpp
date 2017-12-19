@@ -21,8 +21,8 @@ AVLTree::~AVLTree() {
 }
 
 /// A singel left rotation.
-/// \param [n]
-/// \return
+/// \param [n] Node for rotation
+/// \return Rotated Nodes
 AVLTree::Node *AVLTree::singleLeftRotate(Node *n) {
     Node *tmp = n->right;
     tmp->parent = n->parent;
@@ -45,8 +45,8 @@ AVLTree::Node *AVLTree::singleLeftRotate(Node *n) {
 }
 
 /// A single right rotation.
-/// \param [n]
-/// \return
+/// \param [n] Node for rotation
+/// \return Rotated Nodes
 AVLTree::Node *AVLTree::singleRightRotate(Node *n) {
     Node *tmp = n->left;
     tmp->parent = n->parent;
@@ -69,23 +69,23 @@ AVLTree::Node *AVLTree::singleRightRotate(Node *n) {
 }
 
 /// A double right rotation.
-/// \param [n]
-/// \return
+/// \param [n] Node for rotation
+/// \return Rotated Nodes
 AVLTree::Node *AVLTree::doubleRightRotate(Node *n) {
     n->left = singleLeftRotate(n->left);
     return singleRightRotate(n);
 }
 
 /// A double left rotation.
-/// \param [n]
-/// \return
+/// \param [n] Node for rotation
+/// \return Rotated Nodes
 AVLTree::Node *AVLTree::doubleLeftRotate(Node *n) {
     n->right = singleRightRotate(n->right);
     return singleLeftRotate(n);
 }
 
 /// Reblanaced the AVL Tree.
-/// \param [n] Node to be rebalanced
+/// \param [n] Rebalanced Nodes
 void AVLTree::reBalance(Node *n) {
     setBalance(n);
     if (n->balance == 2) { // Tree is right heavy
@@ -212,7 +212,7 @@ bool AVLTree::insert(const int v) {
         return true;
     } else {
         Node *n = root, *parent;
-        while (n) { // TODO while raus und gegen rekursion tauschen, wenn moeglich
+        while (n) { /// TODO while raus und gegen rekursion tauschen, wenn moeglich
             if (n->key == v) {
                 return false;
             }
@@ -233,12 +233,13 @@ bool AVLTree::insert(const int v) {
     }
 }
 
-///
-/// \return
+/// Returns if AVL Tree is balanced.
+/// \return true or false if AVL Tree is balanced
 bool AVLTree::balanced() {
    return isBalanced(root);
 }
 
+/// Ausgabe als digtree (graphvizz) mit innere/äußere Nodebeschriftung und Kanten.
 ostream &operator<<(ostream &os, const AVLTree &tree) {
     function<void(ostream &, const int, const int, const AVLTree::Node *, const string)> printToOs
             = [&](ostream &ost, const int value, const int balance, const AVLTree::Node *node, const string l) {
