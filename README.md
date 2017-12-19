@@ -2,6 +2,8 @@
 # Blatt 7
 ## Prof. Dr. Oliver Braun
 
+[![Coverage Status](https://coveralls.io/repos/github/ob-algdati-ws17/blatt-7-aufgabe-1-tron/badge.svg?branch=master)](https://coveralls.io/github/ob-algdati-ws17/blatt-7-aufgabe-1-tron?branch=master) [![Build Status](https://travis-ci.org/ob-algdati-ws17/blatt-7-aufgabe-1-tron.svg?branch=master)](https://travis-ci.org/ob-algdati-ws17/blatt-7-aufgabe-1-tron)
+
 [Link zur Website](https://ob-algdati-ws17.github.io/blatt-7-aufgabe-1-tron/)
 
 [Link zum Repository](https://github.com/ob-algdati-ws17/blatt-7-aufgabe-1-tron)
