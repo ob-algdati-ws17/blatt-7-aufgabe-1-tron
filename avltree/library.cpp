@@ -212,7 +212,8 @@ bool AVLTree::insert(const int v) {
         return true;
     } else {
         Node *n = root, *parent;
-        while (n) { /// TODO while raus und gegen rekursion tauschen, wenn moeglich
+        /// \todo while raus und gegen rekursion tauschen, wenn moeglich
+        while (n) {
             if (n->key == v) {
                 return false;
             }
