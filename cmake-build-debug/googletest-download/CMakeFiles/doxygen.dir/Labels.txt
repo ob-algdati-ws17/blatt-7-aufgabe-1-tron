@@ -1,0 +1,14 @@
+# Target labels
+ doxygen
+# Source files and their labels
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/CMakeFiles/doxygen
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/CMakeFiles/doxygen.rule
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/CMakeFiles/doxygen-complete.rule
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/doxygen-prefix/src/doxygen-stamp/doxygen-install.rule
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/doxygen-prefix/src/doxygen-stamp/doxygen-mkdir.rule
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/doxygen-prefix/src/doxygen-stamp/doxygen-download.rule
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/doxygen-prefix/src/doxygen-stamp/doxygen-update.rule
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/doxygen-prefix/src/doxygen-stamp/doxygen-patch.rule
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/doxygen-prefix/src/doxygen-stamp/doxygen-configure.rule
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/doxygen-prefix/src/doxygen-stamp/doxygen-build.rule
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/doxygen-prefix/src/doxygen-stamp/doxygen-test.rule

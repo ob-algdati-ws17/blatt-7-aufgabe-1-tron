@@ -1,0 +1,55 @@
+
+{
+	"sources" : 
+	[
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/CMakeFiles/dot"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/CMakeFiles/dot.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/CMakeFiles/dot-complete.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/dot-prefix/src/dot-stamp/dot-install.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/dot-prefix/src/dot-stamp/dot-mkdir.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/dot-prefix/src/dot-stamp/dot-download.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/dot-prefix/src/dot-stamp/dot-update.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/dot-prefix/src/dot-stamp/dot-patch.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/dot-prefix/src/dot-stamp/dot-configure.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/dot-prefix/src/dot-stamp/dot-build.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/dot-prefix/src/dot-stamp/dot-test.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : [ "dot" ],
+		"name" : "dot"
+	}
+}

@@ -1,0 +1,14 @@
+# Target labels
+ googletest
+# Source files and their labels
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/CMakeFiles/googletest
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/CMakeFiles/googletest.rule
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/CMakeFiles/googletest-complete.rule
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/googletest-prefix/src/googletest-stamp/googletest-install.rule
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/googletest-prefix/src/googletest-stamp/googletest-mkdir.rule
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/googletest-prefix/src/googletest-stamp/googletest-download.rule
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/googletest-prefix/src/googletest-stamp/googletest-update.rule
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/googletest-prefix/src/googletest-stamp/googletest-patch.rule
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/googletest-prefix/src/googletest-stamp/googletest-configure.rule
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/googletest-prefix/src/googletest-stamp/googletest-build.rule
+C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/googletest-prefix/src/googletest-stamp/googletest-test.rule

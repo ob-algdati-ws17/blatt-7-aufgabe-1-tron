@@ -1,0 +1,1 @@
+-IC:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/test/.. -isystem C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-src/googletest/include -isystem C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-src/googlemock/include 

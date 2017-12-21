@@ -1,0 +1,55 @@
+
+{
+	"sources" : 
+	[
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/CMakeFiles/doxygen"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/CMakeFiles/doxygen.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/CMakeFiles/doxygen-complete.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/doxygen-prefix/src/doxygen-stamp/doxygen-install.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/doxygen-prefix/src/doxygen-stamp/doxygen-mkdir.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/doxygen-prefix/src/doxygen-stamp/doxygen-download.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/doxygen-prefix/src/doxygen-stamp/doxygen-update.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/doxygen-prefix/src/doxygen-stamp/doxygen-patch.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/doxygen-prefix/src/doxygen-stamp/doxygen-configure.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/doxygen-prefix/src/doxygen-stamp/doxygen-build.rule"
+		},
+		
+		{
+			"file" : "C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download/doxygen-prefix/src/doxygen-stamp/doxygen-test.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : [ "doxygen" ],
+		"name" : "doxygen"
+	}
+}

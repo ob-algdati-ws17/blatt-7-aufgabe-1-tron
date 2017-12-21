@@ -1,0 +1,19 @@
+"C:\Program Files\JetBrains\CLion 2017.2.2\bin\cmake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\Max\Documents\GitHub\blatt-7-aufgabe-1-tron
+You have called ADD_LIBRARY for library Main without any source files. This typically indicates a problem with your CMakeLists.txt file
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug/googletest-download
+[ 11%] Performing update step for 'googletest'
+Current branch master is up to date.
+[ 22%] No configure step for 'googletest'
+[ 33%] No build step for 'googletest'
+[ 44%] No install step for 'googletest'
+[ 55%] No test step for 'googletest'
+[ 66%] Completed 'googletest'
+[100%] Built target googletest
+-- Could NOT find PythonInterp (missing: PYTHON_EXECUTABLE) 
+-- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+Doxygen need to be installed to generate the doxygen documentation
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/Max/Documents/GitHub/blatt-7-aufgabe-1-tron/cmake-build-debug
