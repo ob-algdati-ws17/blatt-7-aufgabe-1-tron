@@ -9,9 +9,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a11d72b6-cc41-4908-812b-dbb9fb21bf6c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" />
-    </list>
+    <list default="true" id="a11d72b6-cc41-4908-812b-dbb9fb21bf6c" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.idea/" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -135,12 +133,12 @@
       <workItem from="1512992507975" duration="2483000" />
       <workItem from="1512999973413" duration="2764000" />
       <workItem from="1513599015613" duration="9816000" />
-      <workItem from="1513893822676" duration="774000" />
+      <workItem from="1513893822676" duration="1305000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15837000" />
+    <option name="totallyTimeSpent" value="16368000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
