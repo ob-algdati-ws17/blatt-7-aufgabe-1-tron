@@ -4,25 +4,21 @@
 
 using namespace std;
 
-/// Constructor for one Node.
 /// \param [v] Value of new Node
 /// \param [p] Node pointer of parent Node
 AVLTree::Node::Node(const int v, Node *p) : key(v), balance(0), parent(p), left(nullptr), right(nullptr) {}
 
-////Deconstructor for one Node.
 AVLTree::Node::~Node() {
     delete left;
     delete right;
 }
 
-///Destructor for AVL Tree.
 AVLTree::~AVLTree() {
     delete root;
 }
 
-/// A singel left rotation.
 /// \param [n] Node for rotation
-/// \return Rotated Nodes
+/// \return New rotated root node
 AVLTree::Node *AVLTree::singleLeftRotate(Node *n) {
     Node *tmp = n->right;
     tmp->parent = n->parent;
@@ -44,9 +40,8 @@ AVLTree::Node *AVLTree::singleLeftRotate(Node *n) {
     return tmp;
 }
 
-/// A single right rotation.
 /// \param [n] Node for rotation
-/// \return Rotated Nodes
+/// \return New rotated root node
 AVLTree::Node *AVLTree::singleRightRotate(Node *n) {
     Node *tmp = n->left;
     tmp->parent = n->parent;
@@ -68,17 +63,15 @@ AVLTree::Node *AVLTree::singleRightRotate(Node *n) {
     return tmp;
 }
 
-/// A double right rotation.
 /// \param [n] Node for rotation
-/// \return Rotated Nodes
+/// \return New rotated root node
 AVLTree::Node *AVLTree::doubleRightRotate(Node *n) {
     n->left = singleLeftRotate(n->left);
     return singleRightRotate(n);
 }
 
-/// A double left rotation.
 /// \param [n] Node for rotation
-/// \return Rotated Nodes
+/// \return New rotated root node
 AVLTree::Node *AVLTree::doubleLeftRotate(Node *n) {
     n->right = singleRightRotate(n->right);
     return singleLeftRotate(n);
@@ -109,21 +102,18 @@ void AVLTree::reBalance(Node *n) {
     }
 }
 
-/// Returns the height of the Node.
 /// \param [n] Start node
 /// \return Height of Node
 int AVLTree::height(Node *n) {
     return (!n) ? -1 : 1 + max(height(n->left), height(n->right));
 }
 
-/// Sets the balance of the Nodes.
 /// The AVL-Criterion from wikipedia.de
 /// \param [n] Start node
 void AVLTree::setBalance(Node *n) {
     n->balance = height(n->right) - height(n->left);
 }
 
-/// Returns if is the tree balanced.
 /// \param [n] Node to check
 /// \return true or false if tree is balanced
 bool AVLTree::isBalanced(Node *n) {
@@ -140,7 +130,6 @@ bool AVLTree::isBalanced(Node *n) {
     return true;
 }
 
-/// Searches for a value in AVL Tree.
 /// \param [v] Value of Node
 /// \return true or false if Node was found
 bool AVLTree::search(const int v) {
@@ -161,7 +150,6 @@ bool AVLTree::search(const int v) {
     return treeSearch(v, root);
 }
 
-/// Removes a Node by value.
 /// \param [v] Value of Node
 /// \return true or false if Node was deleted
 bool AVLTree::remove(const int v) {
@@ -203,7 +191,6 @@ bool AVLTree::remove(const int v) {
     return false;
 }
 
-/// Inserts a Node.
 /// \param [v] New Key for the new Node
 /// \return true or false if a Node was inserted
 bool AVLTree::insert(const int v) {
@@ -234,13 +221,11 @@ bool AVLTree::insert(const int v) {
     }
 }
 
-/// Returns if AVL Tree is balanced.
 /// \return true or false if AVL Tree is balanced
 bool AVLTree::balanced() {
    return isBalanced(root);
 }
 
-/// Ausgabe als digtree (graphvizz) mit innere/äußere Nodebeschriftung und Kanten.
 ostream &operator<<(ostream &os, const AVLTree &tree) {
     function<void(ostream &, const int, const int, const AVLTree::Node *, const string)> printToOs
             = [&](ostream &ost, const int value, const int balance, const AVLTree::Node *node, const string l) {
@@ -270,20 +255,3 @@ ostream &operator<<(ostream &os, const AVLTree &tree) {
     os << "}" << endl;
     return os;
 }
-/*
-/// DEBUGGING ONLY
-int main() {
-    AVLTree t;
-    cout << "Inserting integer values 1 to 10" << endl;
-    for (int i = 1; i <= 10; ++i) {
-        t.insert(i);
-    }
-    cout << "AVL Tree nach insert: \n" << t.balanced() << endl;
-    t.remove(5);
-    cout << "AVLTree nach remove(): \n" << t << endl;
-    cout << "AVLTree search for 5: " << (t.search(5) ? "was " : "not ") << "found" << endl;
-    cout << "AVLTree search for 6: " << (t.search(6) ?  "" : "not ") << "found" << endl;
-    cout << "AVL Tree is balanced: " << (t.balanced() ? "" : "not") << "balanced" << endl;
-
-}
-*/
