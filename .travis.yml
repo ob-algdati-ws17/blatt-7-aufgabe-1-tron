@@ -8,14 +8,14 @@ sudo: false
 
 # Blacklist
 branches:
-  except:
-    - gh-pages
+  only:
+    - master
 
 # Environment variables
 env:
   global:
     - GH_REPO_NAME: blatt-7-aufgabe-1-tron
-    - DOXYFILE: $TRAVIS_BUILD_DIR/${CMAKE_CURRENT_SOURCE_DIR}/docs/Doxyfile.in
+    - DOXYFILE: $TRAVIS_BUILD_DIR/docs/Doxyfile.in
     - GH_REPO_REF: github.com/ob-algdati-ws17/blatt-7-aufgabe-1-tron
 
 addons:
