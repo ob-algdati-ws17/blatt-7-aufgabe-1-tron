@@ -6,7 +6,7 @@
 using namespace std;
 
 /// Header class for an AVL Tree.
-/// \authors Maximilian Schmitz, Salman
+/// \authors Maximilian Schmitz, Salman 
 /// \date 20.12.2017/
 /// \version 1.0
 class AVLTree {
@@ -24,10 +24,10 @@ private:
         /// Nodes left right and parent.
         Node *left, *right, *parent;
 
-        /// Deconstructor for one node.
+        /// Deconstructor for a node.
         ~Node();
 
-        /// Constructor for one node.
+        /// Constructor for a node.
         Node(const int, Node *);
     };
 
