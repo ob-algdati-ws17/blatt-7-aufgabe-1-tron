@@ -17,27 +17,32 @@ private:
         const int key;
         /// Balance of node.
         int balance;
-        /// Nodes left right and parent.
-        Node *left, *right, *parent;
+        /// Left node.
+        Node *left = nullptr;
+        /// Right node.
+        Node *right = nullptr;
+        /// Parent node.
+        Node *parent = nullptr;
+        /// Deconstructor for a node.
         ~Node();
         /// Constructor for a node with key and parent node.
         Node(const int, Node *);
     };
     /// Pointer for root node.
     Node *root = nullptr;
-    /// Rotates the tree and returns the new root node.
+    /// Rotates the tree leftwards and returns the new root node.
     /// \return the new root node
     Node* singleLeftRotate(Node*);
-    /// Rotates the tree and returns the new root node.
-    /// \retrun the new root node
+    /// Rotates the tree rightwards and returns the new root node.
+    /// \return the new root node
     Node* singleRightRotate(Node *);
-    /// Rotates the tree and returns the new root node.
+    /// Rotates the tree leftwards and then rightwards and returns the new root node.
     /// \return the new root node
     Node* doubleRightRotate(Node *);
-    /// Rotates the tree and returns the new root node.
+    /// Rotates the tree rightwards and then leftwards and returns the new root node.
     /// \return the new root node
     Node* doubleLeftRotate(Node *);
-    /// Rebalancing the tree.
+    /// Rebalance the tree.
     void reBalance(Node *);
     /// Checks the height of the node.
     /// \return the height of the parameter node.
@@ -49,6 +54,7 @@ private:
     bool isBalanced(Node *);
 
 public:
+    /// Deconstructor for the tree.
     ~AVLTree();
     /// Adds a node with the parameter to the tree.
     /// \return true or false if a node with the value was created and inserted.
