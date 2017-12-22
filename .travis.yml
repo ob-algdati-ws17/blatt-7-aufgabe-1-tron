@@ -1,20 +1,9 @@
 language: cpp
 
-compiler:
+compiler:  
     - gcc
 
-sudo: false
-
-branches:
-  only:
-    - master
-
-env:
-  global:
-    - GH_REPO_NAME: blatt-7-aufgabe-1-tron
-    - DOXYFILE: $TRAVIS_BUILD_DIR/docs/Doxyfile.in
-    - GH_REPO_REF: github.com/ob-algdati-ws17/blatt-7-aufgabe-1-tron
-
+# Install dependencies
 addons:
   apt:
     packages:
@@ -28,19 +17,15 @@ addons:
 
 before_install:
   - pip install --user cpp-coveralls
-
-before_script:
+  
+before_script:  
     - mkdir build
     - cd build
     - cmake ..
 
-script:
+script: 
     - make
-    - test/testLibrary
-
+    - test/testAvlTree
+    
 after_success:
-  - cd $TRAVIS_BUILD_DIR
-  - chmod +x generateDocumentationAndDeploy.sh
-  - ./generateDocumentationAndDeploy.sh
   - coveralls --root .. -E ".*googletest-src.*" -E ".*gtest.*" -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"
-
