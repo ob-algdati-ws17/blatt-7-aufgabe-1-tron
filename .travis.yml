@@ -3,15 +3,12 @@ language: cpp
 compiler:
     - gcc
 
-# This will run on Travis' 'new' container-based infrastructure
 sudo: false
 
-# Blacklist
 branches:
   only:
     - master
 
-# Environment variables
 env:
   global:
     - GH_REPO_NAME: blatt-7-aufgabe-1-tron
@@ -41,7 +38,6 @@ script:
     - make
     - test/testLibrary
 
-# Generate and deploy documentation
 after_success:
   - cd $TRAVIS_BUILD_DIR
   - chmod +x generateDocumentationAndDeploy.sh
