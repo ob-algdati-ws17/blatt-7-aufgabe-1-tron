@@ -25,7 +25,7 @@ before_script:
 
 script: 
     - make
-    - test/testAvlTree
+    - test/testLibrary
     
 after_success:
   - coveralls --root .. -E ".*googletest-src.*" -E ".*gtest.*" -E ".*external.*" -E ".*CMakeFiles.*" -E ".*test/.*.cpp.*"
