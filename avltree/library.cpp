@@ -185,10 +185,9 @@ bool AVLTree::remove(const int v) {
     if (deleteNode) {
         Node *parent = deleteNode->parent;
         // Prüfen, ob Nachfolger Knoten oder Blätter sind
-        bool left = deleteNode->left, right = deleteNode->right;
-        if (left) {
+        if (deleteNode->left) {
                 // Wenn beide Nachfolger Knoten
-            if (right) {
+            if (deleteNode->right) {
                 // Symmetrischen Nachfolger bestimmen
                 Node *follower = deleteNode->right;
                 while (follower->left) {

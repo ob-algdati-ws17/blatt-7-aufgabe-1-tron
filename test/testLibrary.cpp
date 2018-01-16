@@ -106,7 +106,125 @@ TEST(TestAVLTree , Test_CreateTree_Remove_Exists_And_Not_Found) {
     EXPECT_FALSE(t.remove(3));
 }
 
-TEST(TestAVLTree , Test_CreateTree_Remove_Left_And_Follower_Still_Exist) {
+TEST(TestAVLTree , Test_Remove_Root_With_No_Nodes) {
+    AVLTree t;
+    t.insert(1);
+    t.remove(1);
+    //cout << t << endl;
+    EXPECT_FALSE(t.search(1));
+    EXPECT_TRUE(t.balanced());
+}
+
+TEST(TestAVLTree , Test_Remove_Root_With_Left_Node) {
+    AVLTree t;
+    t.insert(2);
+    t.insert(1);
+    t.remove(2);
+    //cout << t << endl;
+    EXPECT_FALSE(t.search(2));
+    EXPECT_TRUE(t.search(1));
+    EXPECT_TRUE(t.balanced());
+}
+
+TEST(TestAVLTree , Test_Remove_Root_With_Right_Node) {
+    AVLTree t;
+    t.insert(2);
+    t.insert(3);
+    t.remove(2);
+    //cout << t << endl;
+    EXPECT_FALSE(t.search(2));
+    EXPECT_TRUE(t.search(3));
+    EXPECT_TRUE(t.balanced());
+}
+
+TEST(TestAVLTree , Test_Remove_Root_With_Two_Nodes) {
+    AVLTree t;
+    t.insert(2);
+    t.insert(1);
+    t.insert(3);
+    t.remove(2);
+    //cout << t << endl;
+    EXPECT_FALSE(t.search(2));
+    EXPECT_TRUE(t.search(1));
+    EXPECT_TRUE(t.search(3));
+    EXPECT_TRUE(t.balanced());
+}
+
+TEST(TestAVLTree , Test_Remove_Left_With_No_Nodes) {
+    AVLTree t;
+    t.insert(1);
+    t.insert(2);
+    t.insert(3);
+    t.remove(1);
+    //cout << t << endl;
+    EXPECT_FALSE(t.search(1));
+    EXPECT_TRUE(t.balanced());
+}
+
+TEST(TestAVLTree , Test_Remove_Right_With_No_Nodes) {
+    AVLTree t;
+    t.insert(1);
+    t.insert(2);
+    t.insert(3);
+    t.remove(3);
+    //cout << t << endl;
+    EXPECT_FALSE(t.search(3));
+    EXPECT_TRUE(t.balanced());
+}
+
+TEST(TestAVLTree , Test_Remove_Left_With_Left_Node) {
+    AVLTree t;
+    t.insert(5);
+    t.insert(3);
+    t.insert(6);
+    t.insert(1);
+    t.remove(3);
+    //cout << t << endl;
+    EXPECT_FALSE(t.search(3));
+    EXPECT_TRUE(t.search(1));
+    EXPECT_TRUE(t.balanced());
+}
+
+TEST(TestAVLTree , Test_Remove_Left_With_Right_Node) {
+    AVLTree t;
+    t.insert(5);
+    t.insert(3);
+    t.insert(6);
+    t.insert(4);
+    t.remove(3);
+    //cout << t << endl;
+    EXPECT_FALSE(t.search(3));
+    EXPECT_TRUE(t.search(4));
+    EXPECT_TRUE(t.balanced());
+}
+
+TEST(TestAVLTree , Test_Remove_Right_With_Left_Node) {
+    AVLTree t;
+    t.insert(5);
+    t.insert(3);
+    t.insert(7);
+    t.insert(6);
+    t.remove(7);
+    //cout << t << endl;
+    EXPECT_FALSE(t.search(7));
+    EXPECT_TRUE(t.search(6));
+    EXPECT_TRUE(t.balanced());
+}
+
+TEST(TestAVLTree , Test_Remove_Right_With_Right_Node) {
+    AVLTree t;
+    t.insert(5);
+    t.insert(3);
+    t.insert(6);
+    t.insert(8);
+    t.remove(6);
+    //cout << t << endl;
+    EXPECT_FALSE(t.search(6));
+    EXPECT_TRUE(t.search(8));
+    EXPECT_TRUE(t.balanced());
+}
+
+TEST(TestAVLTree , Test_Remove_Left_With_Two_Nodes) {
     AVLTree t;
     t.insert(5);
     t.insert(3);
@@ -115,12 +233,13 @@ TEST(TestAVLTree , Test_CreateTree_Remove_Left_And_Follower_Still_Exist) {
     t.insert(4);
     t.remove(3);
     //cout << t << endl;
+    EXPECT_FALSE(t.search(3));
     EXPECT_TRUE(t.search(1));
     EXPECT_TRUE(t.search(4));
     EXPECT_TRUE(t.balanced());
 }
 
-TEST(TestAVLTree , Test_CreateTree_Remove_Right_And_Follower_Still_Exist) {
+TEST(TestAVLTree , Test_Remove_Right_With_Two_Nodes) {
     AVLTree t;
     t.insert(5);
     t.insert(3);
@@ -129,6 +248,7 @@ TEST(TestAVLTree , Test_CreateTree_Remove_Right_And_Follower_Still_Exist) {
     t.insert(8);
     t.remove(7);
     //cout << t << endl;
+    EXPECT_FALSE(t.search(7));
     EXPECT_TRUE(t.search(6));
     EXPECT_TRUE(t.search(8));
     EXPECT_TRUE(t.balanced());
@@ -164,4 +284,26 @@ TEST(TestAVLTree , Test_Double_Right_Rotation) {
     t.insert(1);
     t.insert(2);
     EXPECT_TRUE(t.balanced());
+}
+
+TEST(TestAVLTree , Test_It_All) {
+    AVLTree t;
+    t.insert(5);
+    t.insert(3);
+    t.insert(2);
+    EXPECT_TRUE(t.balanced());
+    t.insert(2);
+    EXPECT_TRUE(t.balanced());
+    t.insert(5);
+    EXPECT_TRUE(t.balanced());
+    t.insert(8);
+    t.insert(4);
+    t.insert(7);
+    EXPECT_TRUE(t.balanced());
+    EXPECT_TRUE(t.search(2));
+    EXPECT_TRUE(t.search(3));
+    EXPECT_TRUE(t.search(4));
+    EXPECT_TRUE(t.search(5));
+    EXPECT_TRUE(t.search(7));
+    EXPECT_TRUE(t.search(8));
 }
