@@ -173,29 +173,29 @@ bool AVLTree::remove(const int v) {
     Node *n = root;
     Node *deleteNode = nullptr;
     // Solange Knoten nicht gefunden oder nicht am Blatt angekommen
-//    function<void(const int)> treeRemove = [&n, &deleteNode, &treeRemove] (const int key) {
-//        if (!deleteNode && !n) {
-//            return;
-//        } else {
-//            if (n->key == key) {
-//                deleteNode = n;
-//                return;
-//            } else {
-//                n = key >= n->key ? n->right : n->left;
-//                treeRemove(key);
-//            }
+    function<void(const int)> treeRemove = [&n, &deleteNode, &treeRemove] (const int key) {
+        if (!deleteNode && !n) {
+            return;
+        } else {
+            if (n->key == key) {
+                deleteNode = n;
+                return;
+            } else {
+                n = key >= n->key ? n->right : n->left;
+                treeRemove(key);
+            }
+        }
+    };
+    treeRemove(v);
+//    while (!deleteNode && n) {
+//
+//        if (n->key == v) {
+//            deleteNode = n;
 //        }
-//    };
-//    treeRemove(v);
-    while (!deleteNode && n) {
-
-        if (n->key == v) {
-            deleteNode = n;
-        }
-        else {
-            n = v >= n->key ? n->right : n->left;
-        }
-    }
+//        else {
+//            n = v >= n->key ? n->right : n->left;
+//        }
+//    }
     if (deleteNode) {
         Node *parent = deleteNode->parent;
         // Prüfen, ob Nachfolger Knoten oder Blätter sind
@@ -204,17 +204,17 @@ bool AVLTree::remove(const int v) {
             if (deleteNode->right) {
                 // Symmetrischen Nachfolger bestimmen
                 Node *follower = deleteNode->right;
-//                function<void(Node *)> searchFollower = [&] (Node *f) {
-//                    if (!f->left) {
-//                        return;
-//                    } else {
-//                        searchFollower(f->left);
-//                    }
-//                };
-//                searchFollower(follower);
-                while (follower->left) {
-                    follower = follower->left;
-                }
+                function<void(Node *)> searchFollower = [&] (Node *f) {
+                    if (!f->left) {
+                        return;
+                    } else {
+                        searchFollower(f->left);
+                    }
+                };
+                searchFollower(follower);
+//                while (follower->left) {
+//                    follower = follower->left;
+//                }
                 // Den zu löschenden Knoten durch einen neuen ersetzen mit dem
                 // Schlüssel vom Symmetrischen Nachfolger
                 n = new Node(follower->key, parent);
