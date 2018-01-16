@@ -80,21 +80,33 @@ AVLTree::Node *AVLTree::doubleLeftRotate(Node *n) {
 /// Reblanaced the AVL Tree.
 /// \param [n] Rebalanced Nodes
 void AVLTree::reBalance(Node *n) {
+    if (!n) {
+        return;
+    }
     setBalance(n);
-    if (n->balance == 2) { // Tree is right heavy
-        if (height(n->right->left) >= height(n->right->right)) { // Tree's right subtree is left heavy
+        // Wenn rechter Teilbaum überwiegt (-> r)
+    if (n->balance == 2) {
+            // Wenn linker Teilbaum des Teilbaumes überwiegt (-> r -> l)
+        if (height(n->right->left) >= height(n->right->right)) {
             n = doubleLeftRotate(n);
-        } else {
+        }
+            // Wenn rechter Teilbaum des Teilbaumes überwiegt (-> r -> r)
+        else {
             n = singleLeftRotate(n);
         }
-    } else if (n->balance == -2) { // Tree is left heavy
+    }
+        // Wenn linker Teilbaum überwiegt (-> l)
+    else if (n->balance == -2) {
+            // Wenn rechter Teilbaum des Teilbaumes überwiegt (-> l -> r)
         if (height(n->left->right) >= height(n->left->left)) { // Tree's left subtree is right heavy
             n = doubleRightRotate(n);
-        } else {
+        }
+            // Wenn linker Teilbaum des Teilbaumes überwiegt (-> l -> l)
+        else {
             n = singleRightRotate(n);
         }
     }
-
+    // Rekursiv nach oben zur Wurzel gehen
     if (n->parent) {
         reBalance(n->parent);
     } else {
@@ -153,40 +165,69 @@ bool AVLTree::search(const int v) {
 /// \param [v] Value of Node
 /// \return true or false if Node was deleted
 bool AVLTree::remove(const int v) {
-    if (!root) {
-        return false;
-    }
 
     Node *n = root;
-    Node *parent = root;
     Node *deleteNode = nullptr;
-    Node *child = root;
+    // Solange Knoten nicht gefunden oder nicht am Blatt angekommen
+    while (!deleteNode && n) {
 
-    while (child) {
-        parent = n;
-        n = child;
-        child = v >= n->key ? n->right : n->left;
-        if (v == n->key) {
+        if (n->key == v) {
             deleteNode = n;
-            break;
+        }
+        else {
+            n = v >= n->key ? n->right : n->left;
         }
     }
-
     if (deleteNode) {
-        deleteNode = n;
-        child = n->left ? n->left : n->right;
-        if (root->key == v) {
-            root = child;
-        } else {
-            if (parent->left == n) {
-                parent->left = child;
-            } else {
-                parent->right = child;
+        Node *parent = deleteNode->parent;
+        // Prüfen, ob Nachfolger Knoten oder Blätter sind
+        bool left = deleteNode->left, right = deleteNode->right;
+        if (left) {
+                // Wenn beide Nachfolger Knoten
+            if (right) {
+                // Symmetrischen Nachfolger bestimmen
+                Node *follower = deleteNode->right;
+                while (follower->left) {
+                    follower = follower->left;
+                }
+                // Den zu löschenden Knoten durch einen neuen ersetzen mit dem
+                // Schlüssel vom Symmetrischen Nachfolger
+                n = new Node(follower->key, parent);
+                // Symmetrischen Nachfolger löschen
+                remove(follower->key);
+                n->left = deleteNode->left;
+                n->right = deleteNode->right;
+
             }
-            reBalance(parent);
-            delete deleteNode;
+                // Nur linker Nachfolger Knoten
+            else {
+                n = deleteNode->left;
+            }
         }
+            // Nur rechter Nachfolger Knoten
+        else if (right) {
+            n = deleteNode->right;
+        }
+            // Beide Nachfolger Blätter
+        else {
+            // Den zu löschenden Knoten durch Blatt ersetzen
+            n = nullptr;
+        }
+        // Wenn parent nicht null, Nachfolger richtig festlegen
+        if (parent) {
+            if (parent->right == deleteNode) {
+                parent->right = n;
+            } else {
+                parent->left = n;
+            }
+        }
+        // Knoten löschen
+        deleteNode->right = nullptr;
+        deleteNode->left = nullptr;
+        delete deleteNode;
+        reBalance(parent);
         return true;
+
     }
     return false;
 }
@@ -194,25 +235,35 @@ bool AVLTree::remove(const int v) {
 /// \param [v] New Key for the new Node
 /// \return true or false if a Node was inserted
 bool AVLTree::insert(const int v) {
+    // Wenn der Baum leer ist, neues Element für root
     if (!root) {
         root = new Node(v, nullptr);
         return true;
+        // Wenn der Baum nicht leer ist
     } else {
         Node *n = root, *parent;
-        /// \todo while raus und gegen rekursion tauschen, wenn moeglich
+        // Solange n nicht nullpointer
         while (n) {
+            // Wenn ein Knoten mit dem Wert bereits vorhanden ist,
+            // dann nichts hinzufügen
             if (n->key == v) {
                 return false;
             }
+            // Pointer auf parent sichern wegen nullpointer
             parent = n;
+            // Wenn der Wert kleiner ist der des aktuellen Knotens,
+            // dann nach links gehen. Ansonsten recht.
             bool left = v < n->key;
             n = left ? n->left : n->right;
+            // Wenn Blatt erreicht, dann neues Element erstellen.
+            // Ansonsten weiter gehen.
             if (!n) {
                 if (left) {
                     parent->left = new Node(v, parent);
                 } else {
                     parent->right = new Node(v, parent);
                 }
+                // Balance nach oben anpassen
                 reBalance(parent);
                 break;
             }
