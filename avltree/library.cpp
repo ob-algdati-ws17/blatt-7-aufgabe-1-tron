@@ -225,6 +225,9 @@ bool AVLTree::remove(const int v) {
                 parent->left = n;
             }
         }
+        else {
+            root = n;
+        }
         // Knoten löschen
         deleteNode->right = nullptr;
         deleteNode->left = nullptr;

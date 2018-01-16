@@ -134,7 +134,7 @@ TEST(TestAVLTree , Test_CreateTree_Remove_Right_And_Follower_Still_Exist) {
     EXPECT_TRUE(t.balanced());
 }
 
-TEST(TestAVLTree , Test_Single_Left_Rotate) {
+TEST(TestAVLTree , Test_Single_Left_Rotation) {
     AVLTree t;
     t.insert(1);
     t.insert(2);
@@ -142,10 +142,26 @@ TEST(TestAVLTree , Test_Single_Left_Rotate) {
     EXPECT_TRUE(t.balanced());
 }
 
-TEST(TestAVLTree , Test_Single_Right_Rotate) {
+TEST(TestAVLTree , Test_Single_Right_Rotation) {
     AVLTree t;
     t.insert(3);
     t.insert(2);
     t.insert(1);
+    EXPECT_TRUE(t.balanced());
+}
+
+TEST(TestAVLTree , Test_Double_Left_Rotation) {
+    AVLTree t;
+    t.insert(1);
+    t.insert(3);
+    t.insert(2);
+    EXPECT_TRUE(t.balanced());
+}
+
+TEST(TestAVLTree , Test_Double_Right_Rotation) {
+    AVLTree t;
+    t.insert(3);
+    t.insert(1);
+    t.insert(2);
     EXPECT_TRUE(t.balanced());
 }
