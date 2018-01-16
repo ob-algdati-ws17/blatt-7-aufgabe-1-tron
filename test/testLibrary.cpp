@@ -133,3 +133,19 @@ TEST(TestAVLTree , Test_CreateTree_Remove_Right_And_Follower_Still_Exist) {
     EXPECT_TRUE(t.search(8));
     EXPECT_TRUE(t.balanced());
 }
+
+TEST(TestAVLTree , Test_Single_Left_Rotate) {
+    AVLTree t;
+    t.insert(1);
+    t.insert(2);
+    t.insert(3);
+    EXPECT_TRUE(t.balanced());
+}
+
+TEST(TestAVLTree , Test_Single_Right_Rotate) {
+    AVLTree t;
+    t.insert(3);
+    t.insert(2);
+    t.insert(1);
+    EXPECT_TRUE(t.balanced());
+}

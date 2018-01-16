@@ -20,6 +20,7 @@ AVLTree::~AVLTree() {
 /// \param [n] Node for rotation
 /// \return New rotated root node
 AVLTree::Node *AVLTree::singleLeftRotate(Node *n) {
+    cout << "SLR" << endl;
     Node *tmp = n->right;
     tmp->parent = n->parent;
     n->right = tmp->left;
@@ -43,6 +44,7 @@ AVLTree::Node *AVLTree::singleLeftRotate(Node *n) {
 /// \param [n] Node for rotation
 /// \return New rotated root node
 AVLTree::Node *AVLTree::singleRightRotate(Node *n) {
+    cout << "SRR" << endl;
     Node *tmp = n->left;
     tmp->parent = n->parent;
     n->left = tmp->right;
@@ -66,6 +68,7 @@ AVLTree::Node *AVLTree::singleRightRotate(Node *n) {
 /// \param [n] Node for rotation
 /// \return New rotated root node
 AVLTree::Node *AVLTree::doubleRightRotate(Node *n) {
+    cout << "DRR" << endl;
     n->left = singleLeftRotate(n->left);
     return singleRightRotate(n);
 }
@@ -73,6 +76,7 @@ AVLTree::Node *AVLTree::doubleRightRotate(Node *n) {
 /// \param [n] Node for rotation
 /// \return New rotated root node
 AVLTree::Node *AVLTree::doubleLeftRotate(Node *n) {
+    cout << "DLR" << endl;
     n->right = singleRightRotate(n->right);
     return singleLeftRotate(n);
 }
