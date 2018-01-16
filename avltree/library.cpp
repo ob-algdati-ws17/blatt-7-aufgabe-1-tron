@@ -204,17 +204,17 @@ bool AVLTree::remove(const int v) {
             if (deleteNode->right) {
                 // Symmetrischen Nachfolger bestimmen
                 Node *follower = deleteNode->right;
-                function<void(Node *)> searchFollower = [&] (Node *f) {
-                    if (!f->left) {
-                        return;
-                    } else {
-                        searchFollower(f->left);
-                    }
-                };
-                searchFollower(follower);
-//                while (follower->left) {
-//                    follower = follower->left;
-//                }
+//                function<void(Node *)> searchFollower = [&] (Node *f) {
+//                    if (!f->left) {
+//                        return;
+//                    } else {
+//                        searchFollower(f->left);
+//                    }
+//                };
+//                searchFollower(follower);
+                while (follower->left) {
+                    follower = follower->left;
+                }
                 // Den zu löschenden Knoten durch einen neuen ersetzen mit dem
                 // Schlüssel vom Symmetrischen Nachfolger
                 n = new Node(follower->key, parent);
