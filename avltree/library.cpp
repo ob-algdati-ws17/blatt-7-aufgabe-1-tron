@@ -250,32 +250,52 @@ bool AVLTree::insert(const int v) {
     } else {
         Node *n = root, *parent;
         // Solange n nicht nullpointer
-        while (n) {
-            // Wenn ein Knoten mit dem Wert bereits vorhanden ist,
-            // dann nichts hinzufügen
-            if (n->key == v) {
+        function<bool(const int, Node*, Node*)> treeInsert = [&] (const int key, Node *p, Node *node) {
+            if (node->key == key) {
                 return false;
             }
-            // Pointer auf parent sichern wegen nullpointer
-            parent = n;
-            // Wenn der Wert kleiner ist der des aktuellen Knotens,
-            // dann nach links gehen. Ansonsten recht.
-            bool left = v < n->key;
-            n = left ? n->left : n->right;
-            // Wenn Blatt erreicht, dann neues Element erstellen.
-            // Ansonsten weiter gehen.
-            if (!n) {
+            p = node;
+            bool left = key < node->key;
+            node = left ? node->left : node->right;
+            if (!node) {
                 if (left) {
-                    parent->left = new Node(v, parent);
+                    p->left = new Node(key, p);
                 } else {
-                    parent->right = new Node(v, parent);
+                    p->right = new Node(key, p);
                 }
-                // Balance nach oben anpassen
-                reBalance(parent);
-                break;
+                reBalance(p);
+                return true;
+            } else {
+                treeInsert(key, p, node);
             }
-        }
-        return true;
+        };
+        return treeInsert(v, parent, n);
+//        while (n) {
+//            // Wenn ein Knoten mit dem Wert bereits vorhanden ist,
+//            // dann nichts hinzufügen
+//            if (n->key == v) {
+//                return false;
+//            }
+//            // Pointer auf parent sichern wegen nullpointer
+//            parent = n;
+//            // Wenn der Wert kleiner ist der des aktuellen Knotens,
+//            // dann nach links gehen. Ansonsten recht.
+//            bool left = v < n->key;
+//            n = left ? n->left : n->right;
+//            // Wenn Blatt erreicht, dann neues Element erstellen.
+//            // Ansonsten weiter gehen.
+//            if (!n) {
+//                if (left) {
+//                    parent->left = new Node(v, parent);
+//                } else {
+//                    parent->right = new Node(v, parent);
+//                }
+//                // Balance nach oben anpassen
+//                reBalance(parent);
+//                break;
+//            }
+//        }
+//        return true;
     }
 }
 
