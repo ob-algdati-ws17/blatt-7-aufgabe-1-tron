@@ -242,7 +242,7 @@ EXPECT_TRUE(t.search(4));
 EXPECT_TRUE(t.balanced());
 }
 
-TEST(TestAVLTree , Test_Remove_Right_With_Two_Nodes) {
+TEST(TestAVLTree , Test_Remove_Right_With_Two_Nodes_Balance_Negative) {
 AVLTree t;
 t.insert(5);
 t.insert(3);
@@ -257,6 +257,26 @@ EXPECT_FALSE(t.search(8));
 EXPECT_TRUE(t.search(9));
 EXPECT_TRUE(t.search(7));
 EXPECT_TRUE(t.search(6));
+EXPECT_TRUE(t.balanced());
+}
+
+TEST(TestAVLTree , Test_Remove_Right_With_Two_Nodes_Balance_Zero) {
+AVLTree t;
+t.insert(5);
+t.insert(3);
+t.insert(8);
+t.insert(2);
+t.insert(10);
+t.insert(7);
+t.insert(9);
+t.insert(6);
+t.remove(8);
+cout << t << endl;
+EXPECT_FALSE(t.search(8));
+EXPECT_TRUE(t.search(9));
+EXPECT_TRUE(t.search(7));
+EXPECT_TRUE(t.search(6));
+EXPECT_TRUE(t.search(10));
 EXPECT_TRUE(t.balanced());
 }
 
