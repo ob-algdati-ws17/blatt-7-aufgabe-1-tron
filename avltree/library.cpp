@@ -20,7 +20,6 @@ AVLTree::~AVLTree() {
 /// \param [n] Node for rotation
 /// \return New rotated root node
 AVLTree::Node *AVLTree::singleLeftRotate(Node *n) {
-    cout << "SLR" << endl;
     Node *tmp = n->right;
     tmp->parent = n->parent;
     n->right = tmp->left;
@@ -44,7 +43,6 @@ AVLTree::Node *AVLTree::singleLeftRotate(Node *n) {
 /// \param [n] Node for rotation
 /// \return New rotated root node
 AVLTree::Node *AVLTree::singleRightRotate(Node *n) {
-    cout << "SRR" << endl;
     Node *tmp = n->left;
     tmp->parent = n->parent;
     n->left = tmp->right;
@@ -68,7 +66,6 @@ AVLTree::Node *AVLTree::singleRightRotate(Node *n) {
 /// \param [n] Node for rotation
 /// \return New rotated root node
 AVLTree::Node *AVLTree::doubleRightRotate(Node *n) {
-    cout << "DRR" << endl;
     n->left = singleLeftRotate(n->left);
     return singleRightRotate(n);
 }
@@ -76,7 +73,6 @@ AVLTree::Node *AVLTree::doubleRightRotate(Node *n) {
 /// \param [n] Node for rotation
 /// \return New rotated root node
 AVLTree::Node *AVLTree::doubleLeftRotate(Node *n) {
-    cout << "DLR" << endl;
     n->right = singleRightRotate(n->right);
     return singleLeftRotate(n);
 }
@@ -197,10 +193,9 @@ bool AVLTree::remove(const int v) {
 //        }
 //    }
     if (deleteNode) {
-        Node *parent = deleteNode->parent;
         // Prüfen, ob Nachfolger Knoten oder Blätter sind
         if (deleteNode->left) {
-                // Wenn beide Nachfolger Knoten
+            // Wenn beide Nachfolger Knoten
             if (deleteNode->right) {
                 // Symmetrischen Nachfolger bestimmen
                 Node *follower = deleteNode->right;
@@ -217,28 +212,39 @@ bool AVLTree::remove(const int v) {
 //                }
                 // Den zu löschenden Knoten durch einen neuen ersetzen mit dem
                 // Schlüssel vom Symmetrischen Nachfolger
-                n = new Node(follower->key, parent);
+                n = new Node(follower->key, follower->parent);
                 // Symmetrischen Nachfolger löschen
                 remove(follower->key);
                 n->left = deleteNode->left;
                 n->right = deleteNode->right;
-
+                if (n->left) {
+                    n->left->parent = n;
+                }
+                if (n->right) {
+                    n->right->parent = n;
+                }
+                if (deleteNode->parent) {
+                    n->parent = deleteNode->parent;
+                }
             }
-                // Nur linker Nachfolger Knoten
             else {
+                // Links Knoten
+                // --------------------------------------------------
                 n = deleteNode->left;
             }
         }
-            // Nur rechter Nachfolger Knoten
-        else if (right) {
+        else if (deleteNode->right) {
+            // Rechts Knoten
+            // ------------------------------------------------------
             n = deleteNode->right;
         }
-            // Beide Nachfolger Blätter
         else {
-            // Den zu löschenden Knoten durch Blatt ersetzen
+            // Beide Blätter
+            // ------------------------------------------------------
             n = nullptr;
         }
-        // Wenn parent nicht null, Nachfolger richtig festlegen
+
+        Node *parent = deleteNode->parent;
         if (parent) {
             if (parent->right == deleteNode) {
                 parent->right = n;
@@ -249,13 +255,11 @@ bool AVLTree::remove(const int v) {
         else {
             root = n;
         }
-        // Knoten löschen
         deleteNode->right = nullptr;
         deleteNode->left = nullptr;
         delete deleteNode;
         reBalance(parent);
         return true;
-
     }
     return false;
 }
@@ -305,21 +309,21 @@ ostream &operator<<(ostream &os, const AVLTree &tree) {
 
                 static int nullcount = 0;
 
-                if (!node) {
-                    ost << "    null" << nullcount << "[shape=point];" << endl;
-                    ost << "    " << value << "([Label=\"" << balance << "\"])" << " -> null" << nullcount
+                if (node == nullptr) {
+                    os << "    null" << nullcount << "[shape=point];" << endl;
+                    os << "    " << value << " -> null" << nullcount
                        << " [label=\"" << l << "\"];" << endl;
                     nullcount++;
                 } else {
-                    ost << "    " << value << "([Label=\"" << balance << "\"])" << " -> " << node->key
-                       << "([Label=\"" << node->balance << "\"])" << " [label=\"" << l << "\"];" << endl;
+                    os << "    " << value << " -> " << node->key
+                       << " [label=\"" << l << "\"];" << endl;
 
                     printToOs(ost, node->key, node->balance, node->left, "l");
                     printToOs(ost, node->key, node->balance, node->right, "r");
                 }
             };
     os << "digraph tree {" << endl;
-    if (!tree.root) {
+    if (tree.root == nullptr) {
         os << "    null " << "[shape=point];" << endl;
     } else {
         printToOs(os, tree.root->key, tree.root->balance, tree.root->left, "l");
