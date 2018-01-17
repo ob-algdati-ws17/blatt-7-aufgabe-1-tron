@@ -7,8 +7,8 @@ using namespace std;
 
 /// Header class for an AVL Tree.
 /// \authors Maximilian Schmitz, Salman Alhadziev
-/// \date 21.12.2017/
-/// \version 1.1
+/// \date 17.01.2018
+/// \version 1.3
 class AVLTree {
 private:
     /// Struct for one Node.
@@ -66,10 +66,10 @@ public:
     /// \return true or false if the value is in the tree
     bool search(const int);
     /// Checks if the tree is balanced or not.
-    /// \return troue or false if tree is balanced
+    /// \return true or false if tree is balanced
     bool balanced();
     /// Returns the tree as format graphviz tree.
-    /// \return treea as format: graphviz tree
+    /// \return tree as format: graphviz tree
     friend ostream &operator<<(ostream &, const AVLTree &);
 };
 

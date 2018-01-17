@@ -183,15 +183,6 @@ bool AVLTree::remove(const int v) {
         }
     };
     treeRemove(v);
-//    while (!deleteNode && n) {
-//
-//        if (n->key == v) {
-//            deleteNode = n;
-//        }
-//        else {
-//            n = v >= n->key ? n->right : n->left;
-//        }
-//    }
     if (deleteNode) {
         // Prüfen, ob Nachfolger Knoten oder Blätter sind
         if (deleteNode->left) {
@@ -218,19 +209,16 @@ bool AVLTree::remove(const int v) {
                 if (deleteNode->parent) {
                     n->parent = deleteNode->parent;
                 }
-            }
-            else {
+            } else {
                 // Links Knoten
                 // --------------------------------------------------
                 n = deleteNode->left;
             }
-        }
-        else if (deleteNode->right) {
+        } else if (deleteNode->right) {
             // Rechts Knoten
             // ------------------------------------------------------
             n = deleteNode->right;
-        }
-        else {
+        } else {
             // Beide Blätter
             // ------------------------------------------------------
             n = nullptr;
@@ -243,8 +231,7 @@ bool AVLTree::remove(const int v) {
             } else {
                 parent->left = n;
             }
-        }
-        else {
+        } else {
             root = n;
         }
         deleteNode->right = nullptr;
